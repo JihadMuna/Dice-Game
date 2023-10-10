@@ -1,34 +1,90 @@
+@import url('https://fonts.googleapis.com/css2?family=Phudu:wght@800&family=Young+Serif&display=swap');
 
 * {
 margin: 0;
 padding: 0;
-font-size: 50%;
 box-sizing: border-box;
+font-size: 50%;
 }
 
+/* first page styling */
+.container {
+    position: relative;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    width: 105rem;
+    height: 55rem;
+    border: 4px solid red;
+    border-radius: 2rem;
+background-color: rgb(124, 117, 117);
+}
+
+.game-instructions {
+  margin: 5rem 2rem;
+}
+h2 {
+    font-size: 2.5rem;   
+    margin: 1.5rem;
+    font-weight: 500;
+}
+
+ul {
+    font-size: 3.5rem;
+    font-weight: 100;
+    padding: 1rem 1rem;
+}
+.select-score {
+    margin: auto;
+    text-align: center;
+}
+.score-input {
+    width: 70%;
+    height: 4rem;
+    border-radius: 2rem;
+    font-size: 2.5rem;
+    border: 1px solid black;
+    text-align: center;
+}
+.start-game {
+margin-top: 2rem;
+    width: 70%;
+height: 4.5rem;
+border: none;
+border-radius: 5rem;
+cursor: pointer;
+background-color:azure;
+}
+.start-game:hover {
+    background-color: rgb(243, 205, 205);
+}
+.start-game a {
+    font-size: 2rem;
+    color: rgb(54, 53, 53);
+    text-decoration: none;
+}
 body {
-font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+font-family:'Young Serif', serif;
 font-weight: bold;
 height: 100vh;
+color:black;
 background-image:url(sources/dice-background.png);
 display: flex;
 align-items: center;
 justify-content: center;
-color: white;
 }
 
 main {
 position: relative;
-display: flex;
-width: 100rem;
+width: 110rem;
 height: 60rem;
-background-color:black;
-border-radius: 10px;
+background:linear-gradient(to right, rgb(63, 62, 62), darkgray);
+display: flex;
 }
 
 .player {
-flex: 50%;
-padding: 9rem;
+    flex: 50%;
+padding: 5rem;
 display: flex;
 flex-direction: column;
 align-items: center;
@@ -39,32 +95,39 @@ transition: all 0.75s;
 position: relative;
 font-size: 4rem;
 text-transform: uppercase;
-letter-spacing: 1px;
-word-spacing: 2px;
-font-weight: 300;
+font-weight: bold;
 margin-bottom: 1rem;
 }
 
 .score {
-font-size: 8rem;
-font-weight: 300;
-color: red;
+font-size: 7rem;
+font-weight: 400;
+color: darkred;
 margin-bottom: auto;
 }
 
-.player .name {
-font-weight: 700;
+.player-active {
+background-color: darkgray;
 }
 
-.player .score {
-font-weight: 400;
+.player-active .name {
+font-weight: bolder;
 }
 
+.player-active .score {
+font-weight: bold;
+}
+
+.dice-area {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 .current {
-background-color: gray;
-border-radius: 10px;
-color: white;
-width: 65%;
+background-color:rgb(252, 52, 52);
+border-radius: 9px;
+color: #fff;
+width: 50%;
 padding: 2rem;
 text-align: center;
 transition: all 0.75s;
@@ -73,60 +136,66 @@ transition: all 0.75s;
 .current-label {
 text-transform: uppercase;
 margin-bottom: 1rem;
-font-size: 1.7rem;
-color: darkred;
+font-size: 2rem;
+color:beige;
+font-weight: 100;
 }
 
 .current-score {
 font-size: 3.5rem;
+font-weight: 100;
 }
 
-button {
+.btn {
 position: absolute;
 left: 50%;
 transform: translateX(-50%);
-color: black;
-border: none;
+color: rgb(70, 47, 47);
 font-size: 1.8rem;
 text-transform: uppercase;
 cursor: pointer;
+font-weight: 500;
 transition: all 0.2s;
 background-color: white;
 padding: 0.7rem 2.5rem;
 border-radius: 50rem;
 }
 
-.newButton {
-top: 4rem;
-}
-.rollButtons {
-top: 39.3rem;
-}
-.holdButton{
-top: 46.1rem;
+.btn-new {
+    font-size: medium;
+    width: 17rem;
+    height: 5rem;
+top: 5rem;
+background-color: black;
+color: white;
+border-color: red;
 }
 
-button:active {
+.btn-roll {
+top: 43rem;
+width: 15rem;
+height: 4rem;
+color: darkred;
+border: none;
+}
+
+.btn-hold {
+top: 50rem;
+border: none;
+}
+.btn:active {
 transform: translate(-50%, 3px);
-box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
-}
-
-.dice {
-position: absolute;
-left: 50%;
-top: 16.5rem;
-transform: translateX(-50%);
-height: 10rem;
-box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
 }
 
 .player--winner {
 background-color: #2f2f2f;
 }
+
 .player--winner .name {
 font-weight: 700;
-color: #c7365f;
+color:tomato;
 }
+
 .hidden {
 display: none;
 }
