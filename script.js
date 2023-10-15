@@ -25,19 +25,109 @@ Can be a funny gif or anything you can think of.
 5. Add background music and sound effects.
 6. Any other additions are welcome. Go crazy!
 */
+let scores;
+let roundScore;
+let activePlayer;
+let gamePlaying;
+let winningScore;
 
-//generate a random number from 1 to 6:
-const firstRandomNum = Math.floor(Math,random() * 6) + 1;
+// Initialize the game
+function init(){
+    scores = [0,0];
+    roundScore = 0;
+    activePlayer = 0;
+    gamePlayer = true;
+    winningScore = 100; // Default winning score
+    
+    document.querySelector('#score1').textContent = '0';
+    document.querySelector('#score2').textContent = '0';
+document.querySelector('#current1').textContent = '0';
+document.querySelector('#current2').textContent = '0';
+document.querySelector('.dice').style.display = 'none';
+document.querySelector('.winning-score').value = '';
 
-// images/dice1.png upto images/dice6.png
-const firstDiceImage = 'sources/dice' + firstRandomNum + '.png';
+ // Event listeners for buttons
+document.querySelector('.btn-new').addEventListener('click', rollDice);
+document.querySelector('.btn-roll').addEventListener('click', holdScore);
+document.querySelector('.btn-hold').addEventListener('click', initGame);
 
-document.querySelectorAll('img')[0].setAttribute('src', firstDiceImage);
+    // Event listener for changing the winning score
+document.querySelector('.winning-score').addEventListener('input', function () {
+    winningScore = parseInt(this.value) || 100; // Set a default value if input is empty
+});
+}
 
-//generate a random number from 1 to 6 (for dice2):
-const secondRandomNum = Math.floor(Math,random() * 6) + 1;
+// function t roll the dice
+function rollDice() {
+    if (gamePlaying) {
+        // Generate random dice numbers
+        const dice1 = Mat.floor(Math.random() * 6) +1;
+        const dice2 = Mat.floor(Math.random() * 6) +1;
 
-// images/dice1.png upto images/dice6.png
-const secondDiceImage = 'sources/dice' + secondRandomNum + '.png';
+        // Display the dice images
+        const diceIMG1 = document.querySelector('#dice1');
+        const diceIMG2 = document.querySelector('#dice2');
+        diceIMG1.style.display = 'block';
+        diceIMG2.style.display = 'block';
+        diceIMG1.src = 'dice' + dice1 + '.png';
+        diceIMG2.src = 'dice' + dice2 + '.png';
 
-document.querySelectorAll('img')[1].setAttribute('src', secondDiceImage);
+        // Update round score if both dice are not 6
+        if (dice1 !== 6 || dice2 !== 6) {
+            roundScore += dice1 + dice2;
+            document.querySelector('.score' + activePlayer).textContent = roundScore;
+        } else {
+            // If both dice are 6, player loses round score are true
+            roundScore = 0;
+            document.querySelector('.score' + activePlayer).textContent = roundScore;
+            switchPlayer();
+        }
+        
+    }
+}
+
+// Function to hold the score
+function holdScore() {
+if (gamePlaying) {
+    // Add round score to total score
+    scores[activePlayer] += roundScore;
+    document.querySelector('.current' + activePlayer).textContent = scores[activePlayer];
+
+    // Check if player won
+    if (scores[activePlayer] >= winningScore) {
+        document.querySelector('.winning-score').value = ''; // Reset the winning score input
+        document.querySelector('player' + activePlayer).textContent = 'Winner!';
+        document.querySelector('.dice').style.display = 'none';
+        gamePlaying = false; 
+    } else {
+        // Switch to the next player
+        switchPlayer();
+    }
+}
+}
+// Function to switch to the next player
+function switchPlayer() {
+    activePlayer === 0 ? (activePlayer = 1) : (activePlayer =0);
+    roundScore = 0;
+
+    // Update UI to show active player
+    document.querySelector('.score1').textContent = '0';
+    document.querySelector('.score2').textContent = '0';
+
+    // Toggle active player class for styling
+    document.querySelector('.player1').classList.toggle('active');
+    document.querySelector('.player2').classList.toggle('active');
+}
+
+// Function to initialize a new game
+function initGame () {
+    init();
+}
+
+//Event listener for changing the winning score
+document.querySelector('winning-score').addEventListener('input', function() {
+    winningScore = parseInt(this.value) || 100; // Set a default if input is empty
+});
+
+//Initialize the game when the page loads
+init();

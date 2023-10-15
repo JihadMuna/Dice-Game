@@ -17,7 +17,7 @@ font-size: 50%;
     height: 55rem;
     border: 4px solid red;
     border-radius: 2rem;
-background-color: rgb(124, 117, 117);
+background-color: rgb(138, 130, 130);
 }
 
 .game-instructions {
@@ -118,11 +118,6 @@ font-weight: bolder;
 font-weight: bold;
 }
 
-.dice-area {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
 .current {
 background-color:rgb(252, 52, 52);
 border-radius: 9px;
@@ -146,7 +141,8 @@ font-size: 3.5rem;
 font-weight: 100;
 }
 
-.btn {
+/* Button style */
+button {
 position: absolute;
 left: 50%;
 transform: translateX(-50%);
@@ -161,7 +157,7 @@ padding: 0.7rem 2.5rem;
 border-radius: 50rem;
 }
 
-.btn-new {
+#btn-new {
     font-size: medium;
     width: 17rem;
     height: 5rem;
@@ -171,7 +167,7 @@ color: white;
 border-color: red;
 }
 
-.btn-roll {
+#btn-roll {
 top: 43rem;
 width: 15rem;
 height: 4rem;
@@ -179,12 +175,28 @@ color: darkred;
 border: none;
 }
 
-.btn-hold {
+#btn-hold {
 top: 50rem;
 border: none;
 }
-.btn:active {
+button:active {
 transform: translate(-50%, 3px);
+}
+
+/* Dice style */
+.dice {
+    width: 80px;
+    height: 80px;
+    margin: 20px;
+    display: none;
+}
+
+#dice1 {
+top: 15rem;
+}
+
+#dice2 {
+top: 30rem;
 }
 
 .player--winner {
@@ -196,6 +208,22 @@ font-weight: 700;
 color:tomato;
 }
 
+/* Winner message style */
+.player--winner {
+    color: green;
+}
+
 .hidden {
 display: none;
+}
+
+/* Special event style */
+.special-event {
+    display: none;
+    margin-top: 20px;
+}
+
+.special-event img {
+    max-width: 100%;
+    border-radius: 10px;
 }
