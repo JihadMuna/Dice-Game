@@ -1,229 +1,163 @@
 @import url('https://fonts.googleapis.com/css2?family=Phudu:wght@800&family=Young+Serif&display=swap');
 
 * {
-margin: 0;
-padding: 0;
-box-sizing: border-box;
-font-size: 50%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 50%;
 }
 
-/* first page styling */
-.container {
-    position: relative;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    width: 105rem;
-    height: 55rem;
-    border: 4px solid red;
-    border-radius: 2rem;
-background-color: rgb(138, 130, 130);
-}
-
-.game-instructions {
-  margin: 5rem 2rem;
-}
-h2 {
-    font-size: 2.5rem;   
-    margin: 1.5rem;
-    font-weight: 500;
-}
-
-ul {
-    font-size: 3.5rem;
-    font-weight: 100;
-    padding: 1rem 1rem;
-}
-.select-score {
-    margin: auto;
-    text-align: center;
-}
-.score-input {
-    width: 70%;
-    height: 4rem;
-    border-radius: 2rem;
-    font-size: 2.5rem;
-    border: 1px solid black;
-    text-align: center;
-}
-.start-game {
-margin-top: 2rem;
-    width: 70%;
-height: 4.5rem;
-border: none;
-border-radius: 5rem;
-cursor: pointer;
-background-color:azure;
-}
-.start-game:hover {
-    background-color: rgb(243, 205, 205);
-}
-.start-game a {
-    font-size: 2rem;
-    color: rgb(54, 53, 53);
-    text-decoration: none;
-}
 body {
-font-family:'Young Serif', serif;
-font-weight: bold;
-height: 100vh;
-color:black;
-background-image:url(sources/dice-background.png);
-display: flex;
-align-items: center;
-justify-content: center;
+    font-family: 'Young Serif', serif;
+    font-weight: bold;
+    height: 100vh;
+    color: black;
+    background-image: url(sources/dice-background.png);
+    background-size: cover;
+    display: flex;
+    align-items: flex-start; /* Align players to the top of the page */
+    justify-content: center;
 }
 
 main {
-position: relative;
-width: 110rem;
-height: 60rem;
-background:linear-gradient(to right, rgb(63, 62, 62), darkgray);
-display: flex;
+    position: relative;
+    background: linear-gradient(to right, rgb(63, 62, 62), darkgray);
+    width: 80%;
+    height: 90%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    justify-content: space-between; 
+}
+
+
+.players {
+    position: absolute;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
 }
 
 .player {
-    flex: 50%;
-padding: 5rem;
-display: flex;
-flex-direction: column;
-align-items: center;
-transition: all 0.75s;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .name {
-position: relative;
-font-size: 4rem;
-text-transform: uppercase;
-font-weight: bold;
-margin-bottom: 1rem;
+    font-size: 4rem;   
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 5rem;
 }
 
 .score {
-font-size: 7rem;
-font-weight: 400;
-color: darkred;
-margin-bottom: auto;
+    font-size: 4rem;
+    font-weight: bold;
+    color: darkred;
+    margin-top: 2rem;
 }
 
 .player-active {
-background-color: darkgray;
-}
-
-.player-active .name {
-font-weight: bolder;
-}
-
-.player-active .score {
-font-weight: bold;
+    background-color: darkgray;
 }
 
 .current {
-background-color:rgb(252, 52, 52);
-border-radius: 9px;
-color: #fff;
-width: 50%;
-padding: 2rem;
-text-align: center;
-transition: all 0.75s;
+  margin-top: 45rem;
+  width: 30rem;
+  height: 12rem;
+    background-color: rgb(252, 52, 52);
+    border-radius: 9px;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+    transition: all 0.75s;
 }
 
 .current-label {
-text-transform: uppercase;
-margin-bottom: 1rem;
-font-size: 2rem;
-color:beige;
-font-weight: 100;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    color: beige;
+    font-weight: 100;
 }
 
 .current-score {
-font-size: 3.5rem;
-font-weight: 100;
+    font-size: 3.8rem;
+    font-weight: bold;
+    color: white;
 }
 
-/* Button style */
 button {
-position: absolute;
-left: 50%;
-transform: translateX(-50%);
-color: rgb(70, 47, 47);
-font-size: 1.8rem;
-text-transform: uppercase;
-cursor: pointer;
-font-weight: 500;
-transition: all 0.2s;
-background-color: white;
-padding: 0.7rem 2.5rem;
-border-radius: 50rem;
+    position: absolute;
+    color: rgb(70, 47, 47);
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 2rem;
+    transition: background-color 0.2s;
+    width: 150px;
+    height: 4.5rem;
 }
 
-#btn-new {
-    font-size: medium;
-    width: 17rem;
-    height: 5rem;
-top: 5rem;
-background-color: black;
-color: white;
-border-color: red;
+button:hover {
+    background-color: rgb(243, 205, 205);
 }
 
-#btn-roll {
-top: 43rem;
-width: 15rem;
-height: 4rem;
-color: darkred;
-border: none;
+.newGame {
+border:3px solid red;
+margin-top: 6em;
+width: 180px;
+height: 5rem;
+font-size: 2rem;
 }
 
-#btn-hold {
-top: 50rem;
-border: none;
-}
-button:active {
-transform: translate(-50%, 3px);
+.holdBtn {
+margin-top: 40em;
+border: 3px solid lightyellow;
 }
 
-/* Dice style */
+.rollBtn {
+    margin-top: 35em;
+    border: 3px solid lightblue;
+}
+
 .dice {
-    width: 80px;
-    height: 80px;
-    margin: 20px;
+    position: absolute;
+    margin-top: 200em;
+}
+
+.dice-img {
+    width: 120px;
+    height: 120px;
     display: none;
 }
 
-#dice1 {
-top: 15rem;
+.winning-score {
+    position: absolute;
+    margin-top: 30em;
 }
 
-#dice2 {
-top: 30rem;
+.winning-score label {
+    font-size: 2.5rem;
+    color: whitesmoke;
+    margin-right: 1rem;
+
 }
 
-.player--winner {
-background-color: #2f2f2f;
-}
-
-.player--winner .name {
-font-weight: 700;
-color:tomato;
-}
-
-/* Winner message style */
-.player--winner {
-    color: green;
-}
-
-.hidden {
-display: none;
-}
-
-/* Special event style */
-.special-event {
-    display: none;
-    margin-top: 20px;
-}
-
-.special-event img {
-    max-width: 100%;
-    border-radius: 10px;
+.winning-score input {
+    font-size: 2rem;
+    font-weight: bold;
+    width: 7rem;
+    height: 2.5rem;
+    text-align: center;
+    border: none;
+    border-radius: 4px;
+    background-color: white;
 }
